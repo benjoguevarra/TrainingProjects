@@ -43,8 +43,9 @@ namespace Day3Database.Repositories
         {
             var emp = new Employee();
             emp.EmployeeID = reader.GetGuid(0);
-            emp.EmployeeName = reader.GetString(1);
-            emp.DeptID = reader.GetString(2);
+            emp.EmployeeName = reader.GetString(1); //
+            emp.Department = new Department();
+            emp.Department.DeptID = reader.GetGuid(2);
             return emp;
         }
 
@@ -52,7 +53,7 @@ namespace Day3Database.Repositories
         {
             command.Parameters.Add("@employeeID", SqlDbType.UniqueIdentifier).Value = emp.EmployeeID;
             command.Parameters.Add("@employeeName", SqlDbType.NVarChar, 50).Value = emp.EmployeeName;
-            command.Parameters.Add("@deptID", SqlDbType.NVarChar,50).Value = emp.DeptID;
+            command.Parameters.Add("@deptID", SqlDbType.UniqueIdentifier).Value = emp.Department.DeptID;
         }
 
         protected override void LoadRetrieveParameters(SqlCommand command, Guid id)
@@ -64,7 +65,7 @@ namespace Day3Database.Repositories
         {
             command.Parameters.Add("@employeeID", SqlDbType.UniqueIdentifier).Value = emp.EmployeeID;
             command.Parameters.Add("@employeeName", SqlDbType.NVarChar, 50).Value = emp.EmployeeName;
-            command.Parameters.Add("@deptID", SqlDbType.NVarChar, 50).Value = emp.DeptID;
+            command.Parameters.Add("@deptID", SqlDbType.UniqueIdentifier).Value = emp.Department.DeptID;
         }
     }
 }

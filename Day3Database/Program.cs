@@ -11,11 +11,11 @@ namespace Day3Database
         static void Main(string[] args)
         {
             #region createEmp
-            var emp = CreateEmp("Benjo Guevarra","fb443b98-ff69-4c4c-84bd-90cce2e9cc9e");
+            var emp = CreateEmp("New Benjo", new Guid("67c3d0e7-d64c-45bc-a3c9-42060f3e12d7"));
             var emps = RetrieveEmp(emp.EmployeeID);
             UpdateEmp(emps);
-            var allEmp = RetrieveAllEmp();
-            allEmp.ForEach( (empx) => DeleteEmp(empx.EmployeeID) );
+           var allEmp = RetrieveAllEmp();
+           allEmp.ForEach( (empx) => DeleteEmp(empx.EmployeeID) );
             #endregion
 
             #region createDepartment
@@ -97,12 +97,13 @@ namespace Day3Database
         #endregion
 
         #region employee
-        static Employee CreateEmp(string empName, string deptID)
+        static Employee CreateEmp(string empName, Guid deptID)
         {
             var emp = new Employee();
             emp.EmployeeID = Guid.NewGuid();
             emp.EmployeeName = empName;
-            emp.DeptID = deptID;
+            emp.Department = new Department();
+            emp.Department.DeptID = deptID;
 
             var repo = new EmployeeRepository();
             var newEmp = repo.Create(emp);

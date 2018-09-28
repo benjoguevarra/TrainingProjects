@@ -8,7 +8,8 @@ namespace Day3Database.Models
     {
         public Guid EmployeeID { get; set; }
         public string EmployeeName { get; set;}
-        public string DeptID { get; set; }
+        public Department Department { get; set; }
+       // public DateTime? HireDate { get; set; }
         /* {
              get
              {

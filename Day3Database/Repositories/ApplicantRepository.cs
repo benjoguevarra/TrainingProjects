@@ -58,7 +58,6 @@ namespace Day3Database.Repositories
 
         }
 
-
         protected override Applicant LoadEntity(SqlDataReader reader)
         {
             var applicant = new Applicant();
@@ -74,10 +73,6 @@ namespace Day3Database.Repositories
         {
             command.Parameters.Add("@applicantID",SqlDbType.UniqueIdentifier).Value = id;
         }
-
-  
-
-
         
     }
 }
