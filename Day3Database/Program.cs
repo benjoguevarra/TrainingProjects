@@ -8,7 +8,7 @@ namespace Day3Database
 {
     class Program
     {
-        static void Main(string[] args) //push
+        static void Main(string[] args) //push 2
         {
             #region createEmp
             var emp = CreateEmp("New Benjo", new Guid("67c3d0e7-d64c-45bc-a3c9-42060f3e12d7"));
